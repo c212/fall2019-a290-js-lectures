@@ -52,7 +52,7 @@ class Level {
 ```
 We will walk through this in class to grasp a better understanding.  
   
-He also mentions in chapter 16 various states our game will handle. So, he makes a class called `State`.
+He also mentions in chapter 16 various states our game will handle. So, he makes a class called `State`:
 ```js
 class State {
   constructor(level, actors, status) {
@@ -70,8 +70,93 @@ class State {
   }
 }
 ```
-We will go through this in class to grasp a better understanding.
+The status can change between "lost" and "won" depending on our state. We will go through this in class to grasp a better understanding.
   
+We also need to declare a `Vec` (vector) class to assist us:
+```js
+class Vec {
+  constructor(x, y) {
+    this.x = x; this.y = y;
+  }
+  plus(other) {
+    return new Vec(this.x + other.x, this.y + other.y);
+  }
+  times(factor) {
+    return new Vec(this.x * factor, this.y * factor);
+  }
+}
+```
+We will go through this in class for understanding.
+  
+Now, we should have a `player` class:
+```js
+class Player {
+  constructor(pos, speed) {
+    this.pos = pos;
+    this.speed = speed;
+  }
+
+  get type() { return "player"; }
+
+  static create(pos) {
+    return new Player(pos.plus(new Vec(0, -0.5)),
+                      new Vec(0, 0));
+  }
+}
+
+Player.prototype.size = new Vec(0.8, 1.5);
+```
+We will go through this in class for understanding.
+  
+We should also have a `lava` class:
+```js
+class Lava {
+  constructor(pos, speed, reset) {
+    this.pos = pos;
+    this.speed = speed;
+    this.reset = reset;
+  }
+
+  get type() { return "lava"; }
+
+  static create(pos, ch) {
+    if (ch == "=") {
+      return new Lava(pos, new Vec(2, 0));
+    } else if (ch == "|") {
+      return new Lava(pos, new Vec(0, 2));
+    } else if (ch == "v") {
+      return new Lava(pos, new Vec(0, 3), pos);
+    }
+  }
+}
+
+Lava.prototype.size = new Vec(1, 1);
+```
+We will go through this in class for understanding.
+  
+Lastly, we should have a `coin` class:
+```js
+class Coin {
+  constructor(pos, basePos, wobble) {
+    this.pos = pos;
+    this.basePos = basePos;
+    this.wobble = wobble;
+  }
+
+  get type() { return "coin"; }
+
+  static create(pos) {
+    let basePos = pos.plus(new Vec(0.2, 0.1));
+    return new Coin(basePos, basePos,
+                    Math.random() * Math.PI * 2);
+  }
+}
+
+Coin.prototype.size = new Vec(0.6, 0.6);
+```
+We will go through this in class for understanding.
+  
+
 
 
 ## Step 2: Demonstration ##
