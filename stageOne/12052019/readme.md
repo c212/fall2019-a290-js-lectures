@@ -22,7 +22,7 @@ let simpleLevelPlan = `
 ```  
 This is his simple level he outlines as an example. You will make your own, smaller and more simple level for stage one.  
 Note what each symbol means in terms of the level. In chapter 16, he mentions what each character means.  
-* # represents a wall
+* `#` represents a wall
 * o represents a coin
 * = represents a sliding lava block
 * + represents a lava block
