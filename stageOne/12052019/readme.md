@@ -4,7 +4,7 @@ This will contain our in-class examples for stage one.
 * Understanding of the printing of the world data representation  
 * Drawing of the world you made as an example  
 
-## Step 1: Understanding ##  
+## Step 1: Understanding and Representation ##  
 We will look through and understand up to stage one of the project as well as provide an example.  
   
 Inside of EloquentJavascript, we see that throughout chapter 16 he provides code and examples for this project. Lets take a look at how he represents his world.  
@@ -156,11 +156,27 @@ Coin.prototype.size = new Vec(0.6, 0.6);
 ```
 We will go through this in class for understanding.
   
+"We can now define the levelChars object that maps plan characters to either background grid types or actor classes." - EJ
+```js
+const levelChars = {
+  ".": "empty", "#": "wall", "+": "lava",
+  "@": Player, "o": Coin,
+  "=": Lava, "|": Lava, "v": Lava
+};
+```
+  
+Now that we have our class definitions, lets check out creating an instance of our `Level` class.
+```js
+let simpleLevel = new Level(simpleLevelPlan);
+console.log(`${simpleLevel.width} by ${simpleLevel.height}`);
+// → 22 by 9
+```
+***Note:*** He prints out variables of our instance of `Level`. We are looking for printing and understanding of the whole level. We will go through this part in class.
+  
+
+## Step 2: Drawing and Understanding ##
+We will go through and explore how to draw.  
 
 
+## Step 3: Demonstration ##
 
-## Step 2: Demonstration ##
-We will go through and demonstrate an example of stage 1, as well as walk through the process.  
-
-## Step 3: Running and Submission ##
-Lastly, we will go through how to submit onto Github if you need help.
