@@ -28,7 +28,51 @@ Note what each symbol means in terms of the level. In chapter 16, he mentions wh
 * + represents a lava block
 * @ is where the player starts
 
-We should be able to read worlds and understand what they do, draw them, and print them that contain data we can understand.
+We should be able to read worlds and understand what they do, draw them, and print them that contain data we can understand.  
+In the book, he creates a class `Level` that allows us to create a data representation of our level we made.
+```js
+class Level {
+  constructor(plan) {
+    let rows = plan.trim().split("\n").map(l => [...l]);
+    this.height = rows.length;
+    this.width = rows[0].length;
+    this.startActors = [];
+
+    this.rows = rows.map((row, y) => {
+      return row.map((ch, x) => {
+        let type = levelChars[ch];
+        if (typeof type == "string") return type;
+        this.startActors.push(
+          type.create(new Vec(x, y), ch));
+        return "empty";
+      });
+    });
+  }
+}
+```
+We will walk through this in class to grasp a better understanding.  
+  
+He also mentions in chapter 16 various states our game will handle. So, he makes a class called `State`.
+```js
+class State {
+  constructor(level, actors, status) {
+    this.level = level;
+    this.actors = actors;
+    this.status = status;
+  }
+
+  static start(level) {
+    return new State(level, level.startActors, "playing");
+  }
+
+  get player() {
+    return this.actors.find(a => a.type == "player");
+  }
+}
+```
+We will go through this in class to grasp a better understanding.
+  
+
 
 ## Step 2: Demonstration ##
 We will go through and demonstrate an example of stage 1, as well as walk through the process.  
