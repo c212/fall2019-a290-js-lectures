@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="game.css">
 
 <script>
-//test
+//The level from the book. You should make your own.
 let simpleLevelPlan = `
 ......................
 ..#................#..
@@ -32,6 +32,7 @@ class Level {
   }
 }
 
+  //The state class
 class State {
   constructor(level, actors, status) {
     this.level = level;
@@ -46,6 +47,7 @@ class State {
   }
 }
 
+  //the vector class
 class Vec {
   constructor(x, y) {
     this.x = x; this.y = y;
@@ -58,6 +60,7 @@ class Vec {
   }
 }
 
+  //the player class
 class Player {
   constructor(pos, speed) {
     this.pos = pos;
@@ -71,6 +74,7 @@ class Player {
 }
 Player.prototype.size = new Vec(0.8, 1.5);
 
+  //the lava class
 class Lava {
   constructor(pos, speed, reset) {
     this.pos = pos;
@@ -90,6 +94,7 @@ class Lava {
 }
 Lava.prototype.size = new Vec(1, 1);
 
+  //the coin class
 class Coin {
   constructor(pos, basePos, wobble) {
     this.pos = pos;
