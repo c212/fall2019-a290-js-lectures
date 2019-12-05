@@ -176,6 +176,34 @@ console.log(`${simpleLevel.width} by ${simpleLevel.height}`);
 
 ## Step 2: Drawing and Understanding ##
 We will go through and explore how to draw.  
+  
+Looking at the chapter, we see: "The following helper function provides a succinct way to create an element and give it some attributes and child nodes":
+```js
+function elt(name, attrs, ...children) {
+  let dom = document.createElement(name);
+  for (let attr of Object.keys(attrs)) {
+    dom.setAttribute(attr, attrs[attr]);
+  }
+  for (let child of children) {
+    dom.appendChild(child);
+  }
+  return dom;
+}
+```
+  
+We also see that: "A display is created by giving it a parent element to which it should append itself and a level object."
+```js
+class DOMDisplay {
+  constructor(parent, level) {
+    this.dom = elt("div", {class: "game"}, drawGrid(level));
+    this.actorLayer = null;
+    parent.appendChild(this.dom);
+  }
+
+  clear() { this.dom.remove(); }
+}
+```
+  
 
 
 ## Step 3: Demonstration ##
