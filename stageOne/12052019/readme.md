@@ -204,7 +204,29 @@ class DOMDisplay {
 }
 ```
   
+For scaling:
+```js
+const scale = 20;
 
-
+function drawGrid(level) {
+  return elt("table", {
+    class: "background",
+    style: `width: ${level.width * scale}px`
+  }, ...level.rows.map(row =>
+    elt("tr", {style: `height: ${scale}px`},
+        ...row.map(type => elt("td", {class: type})))
+  ));
+}
+```
+  
+Now we add some css:
+```css
+.background    { background: rgb(52, 166, 251);
+                 table-layout: fixed;
+                 border-spacing: 0;              }
+.background td { padding: 0;                     }
+.lava          { background: rgb(255, 100, 100); }
+.wall          { background: white;              }
+```
 ## Step 3: Demonstration ##
 
