@@ -228,5 +228,94 @@ Now we add some css:
 .lava          { background: rgb(255, 100, 100); }
 .wall          { background: white;              }
 ```
+***NOTE:*** We can add this to its own file called `game.css`
+  
+Now lets add drawing functionality: 
+```js
+function drawActors(actors) {
+  return elt("div", {}, ...actors.map(actor => {
+    let rect = elt("div", {class: `actor ${actor.type}`});
+    rect.style.width = `${actor.size.x * scale}px`;
+    rect.style.height = `${actor.size.y * scale}px`;
+    rect.style.left = `${actor.pos.x * scale}px`;
+    rect.style.top = `${actor.pos.y * scale}px`;
+    return rect;
+  }));
+}
+```
+
+Add some more css: 
+```css
+.actor  { position: absolute;            }
+.coin   { background: rgb(241, 229, 89); }
+.player { background: rgb(64, 64, 64);   }
+```
+
+Create DOM:
+```js
+DOMDisplay.prototype.syncState = function(state) {
+  if (this.actorLayer) this.actorLayer.remove();
+  this.actorLayer = drawActors(state.actors);
+  this.dom.appendChild(this.actorLayer);
+  this.dom.className = `game ${state.status}`;
+  this.scrollPlayerIntoView(state);
+};
+```
+
+Add even more css:
+```css
+.lost .player {
+  background: rgb(160, 64, 64);
+}
+.won .player {
+  box-shadow: -4px -7px 8px white, 4px -7px 8px white;
+}
+.game {
+  overflow: hidden;
+  max-width: 600px;
+  max-height: 450px;
+  position: relative;
+}
+```
+
+Finish display:
+```js
+DOMDisplay.prototype.scrollPlayerIntoView = function(state) {
+  let width = this.dom.clientWidth;
+  let height = this.dom.clientHeight;
+  let margin = width / 3;
+
+  // The viewport
+  let left = this.dom.scrollLeft, right = left + width;
+  let top = this.dom.scrollTop, bottom = top + height;
+
+  let player = state.player;
+  let center = player.pos.plus(player.size.times(0.5))
+                         .times(scale);
+
+  if (center.x < left + margin) {
+    this.dom.scrollLeft = center.x - margin;
+  } else if (center.x > right - margin) {
+    this.dom.scrollLeft = center.x + margin - width;
+  }
+  if (center.y < top + margin) {
+    this.dom.scrollTop = center.y - margin;
+  } else if (center.y > bottom - margin) {
+    this.dom.scrollTop = center.y + margin - height;
+  }
+};
+```
+
+***Now we can display our level!***
+```html
+<link rel="stylesheet" href="game.css">
+
+<script>
+  let simpleLevel = new Level(simpleLevelPlan);
+  let display = new DOMDisplay(document.body, simpleLevel);
+  display.syncState(State.start(simpleLevel));
+</script>
+```
+
 ## Step 3: Demonstration ##
 
