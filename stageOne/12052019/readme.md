@@ -323,7 +323,7 @@ DOMDisplay.prototype.scrollPlayerIntoView = function(state) {
 ## Step 3: Demonstration ##
 Now, when we open our html file, we can see the simple level we made. It should be noted that we should be able to print the instance of our simple level, and understand what it means.
   
-We can also use the `five.js` file we made in silo to display our game in the browser from your port. You would need to add the game files as well to silo.
+We can also use the `five.js` file we made in [Lab 02](https://cs.indiana.edu/classes/a290-js/fall2019/lab02.html "Lab 02") to display our game in the browser from your port. You would need to add the game files as well to silo. If you're on mac, you can upload files [using scp](https://research.csc.fi/csc-guide-copying-files-from-linux-and-mac-osx-machines-with-scp "scp tutorial"). If you are using windows, you can [use winscp](https://winscp.net/eng/index.php "winscp website").
 
 ## Misc Notes ##
 * We seperated our code into 3 different files. We could have kept the `JavaScript` inside of the html `<script>` tags, but this may be messy and hard to organize later on.
