@@ -1,13 +1,16 @@
 # Stage One Example/In Class #
 This will contain our in-class examples for stage one.
+
 ## What we Need ##
-* Understanding of the printing of the world data representation  
-* Drawing of the world you made as an example  
+* Understanding of the printing of the world data representation
+* Drawing of the level ***you made*** as an example.
+
+***DO NOT USE THE EXAMPLE LEVEL PROVIDED IN THE BOOK***
 
 ## Step 1: Understanding and Representation ##  
 We will look through and understand up to stage one of the project as well as provide an example.  
   
-Inside of EloquentJavascript, we see that throughout chapter 16 he provides code and examples for this project. Lets take a look at how he represents his world.  
+Inside of EloquentJavascript, we see that throughout [chapter 16's](https://eloquentjavascript.net/16_game.html "EJ Chapter 16") he provides code and examples for this project. Lets take a look at how he represents his world.  
 ```js
 let simpleLevelPlan = `
 ......................
@@ -318,4 +321,10 @@ DOMDisplay.prototype.scrollPlayerIntoView = function(state) {
 ```
 
 ## Step 3: Demonstration ##
+Now, when we open our html file, we can see the simple level we made. It should be noted that we should be able to print the instance of our simple level, and understand what it means.
+  
+We can also use the `five.js` file we made in silo to display our game in the browser from your port. You would need to add the game files as well to silo.
 
+## Misc Notes ##
+* We seperated our code into 3 different files. We could have kept the `JavaScript` inside of the html `<script>` tags, but this may be messy and hard to organize later on.
+* I did not add many comments to the code. Go through [EloquentJavascript chapter 16's](https://eloquentjavascript.net/16_game.html "EJ Chapter 16") to get a detailed inner working. You will need this for easier understanding.
