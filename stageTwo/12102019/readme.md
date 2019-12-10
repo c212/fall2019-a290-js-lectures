@@ -1,6 +1,6 @@
 # Stage Two Example/In Class #
 This will contain what we go over in class plus a possible stage two example.  
-**NOTE:** This may contain some code for stage 3 that should not be used in stage 2!!!
+**NOTE:** This may or may not contain some code for stage 3 that should not be used in stage 2
 
 ## What we Need ##
 * Intrinsic World Dynamics Demonstrated.  
@@ -162,8 +162,9 @@ function runLevel(level, Display) {
 }
 ```
   
-
+Display and run.
 
 ## Step 3: Demonstration ##  
 
 ## Notes ##  
+Refer to the [chapter 16 coding sandbox] (https://eloquentjavascript.net/code/#16 "EJ Chapter 16 Code Sandbox") for a demonstration of the **full game** running.
