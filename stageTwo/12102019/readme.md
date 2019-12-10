@@ -1,11 +1,12 @@
 # Stage Two Example/In Class #
 This will contain what we go over in class plus a possible stage two example.  
+**NOTE:** This may contain some code for stage 3 that should not be used in stage 2!!!
 
 ## What we Need ##
 * Intrinsic World Dynamics Demonstrated.  
 * Understanding of the code.  
   
-**NOTE: While the code we go through below allows us for detection, etc, we only want the steps for intrinsic world dynamics. Only include what you think demonstrates intrinsic world dynamics and still runs.** 
+**NOTE: While the code we go through below allows us for more than just instrinsic world dynamics, we only want the steps for intrinsic world dynamics. Only include what you think demonstrates intrinsic world dynamics and still runs.** 
 
 ## Step 1: Understanding ##  
 *What is intrinsic world dynamics?*
@@ -16,7 +17,7 @@ We will take a look at this clock in class.
 "Now we’re at the point where we can start adding motion—the most interesting aspect of the game. The basic approach, taken by most games like this, is to split time into small steps and, for each step, move the actors by a distance corresponding to their speed multiplied by the size of the time step. We’ll measure time in seconds, so speeds are expressed in units per second" - EJ
 
 ## Step 2: Working Through It ## 
-### Hit Detection ###
+### Hit Detection and Updates ###
 This method tells us whether a rectangle (specified by a position and a size) touches a grid element of the given type:
 ```JavaScript
 Level.prototype.touches = function(pos, size, type) {
@@ -86,7 +87,35 @@ Coin.prototype.collide = function(state) {
 };
 ```
   
+### Level Updates and Wobbling ###
+"Actor objects’ update methods take as arguments the time step, the state object, and a keys object. The one for the Lava actor type ignores the keys object." - EJ  
+This method makes a new position by getting the speed and time step from the previous position. If there is not object in the way, it moves there as expected. IF there is something there, the way it moves depends on what *type* of lava block it is. Bouncing lava reverses direction, dripping lava goes back to a default position.  
+```JavaScript
+Lava.prototype.update = function(time, state) {
+  let newPos = this.pos.plus(this.speed.times(time));
+  if (!state.level.touches(newPos, this.size, "wall")) {
+    return new Lava(newPos, this.speed, this.reset);
+  } else if (this.reset) {
+    return new Lava(this.reset, this.speed, this.reset);
+  } else {
+    return new Lava(this.pos, this.speed.times(-1));
+  }
+};
+```
+  
+Coins can **wobble** inside their own square. The `wobble` property is increased along with `time` multiplied by `speed` to create a wobble affect. This is their own update method:  
+```JavaScript
+const wobbleSpeed = 8, wobbleDist = 0.07;
 
+Coin.prototype.update = function(time) {
+  let wobble = this.wobble + time * wobbleSpeed;
+  let wobblePos = Math.sin(wobble) * wobbleDist;
+  return new Coin(this.basePos.plus(new Vec(0, wobblePos)),
+                  this.basePos, wobble);
+};
+```
+  
+### Player Movement and Tracking Keys ###
 
 ## Step 3: Demonstration ##  
 
