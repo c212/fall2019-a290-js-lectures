@@ -4,6 +4,8 @@ This will contain what we go over in class plus a possible stage two example.
 ## What we Need ##
 * Intrinsic World Dynamics Demonstrated.  
 * Understanding of the code.  
+  
+**NOTE: While the code we go through below allows us for detection, etc, we only want the steps for intrinsic world dynamics. Only include what you think demonstrates intrinsic world dynamics and still runs.** 
 
 ## Step 1: Understanding ##  
 *What is intrinsic world dynamics?*
@@ -13,7 +15,8 @@ We will take a look at this clock in class.
 
 "Now we’re at the point where we can start adding motion—the most interesting aspect of the game. The basic approach, taken by most games like this, is to split time into small steps and, for each step, move the actors by a distance corresponding to their speed multiplied by the size of the time step. We’ll measure time in seconds, so speeds are expressed in units per second" - EJ
 
-## Step 2: Working Through It ##  
+## Step 2: Working Through It ## 
+### Hit Detection ###
 This method tells us whether a rectangle (specified by a position and a size) touches a grid element of the given type:
 ```JavaScript
 Level.prototype.touches = function(pos, size, type) {
@@ -32,7 +35,57 @@ Level.prototype.touches = function(pos, size, type) {
   }
   return false;
 };
+```  
+  
+The state update method uses touches to figure out whether the player is touching lava. The method is passed a time step and a data structure that tells it which keys are being held down. The first thing it does is call the update method on all actors, producing an array of updated actors. The actors also get the time step, the keys, and the state, so that they can base their update on those. Only the player will actually read keys, since that’s the only actor that’s controlled by the keyboard.  
+```JavaScript
+State.prototype.update = function(time, keys) {
+  let actors = this.actors
+    .map(actor => actor.update(time, this, keys));
+  let newState = new State(this.level, actors, this.status);
+
+  if (newState.status != "playing") return newState;
+
+  let player = newState.player;
+  if (this.level.touches(player.pos, player.size, "lava")) {
+    return new State(this.level, actors, "lost");
+  }
+
+  for (let actor of actors) {
+    if (actor != player && overlap(actor, player)) {
+      newState = actor.collide(newState);
+    }
+  }
+  return newState;
+};
 ```
+  
+Overlap between actors is detected with the overlap function. It takes two actor objects and returns true when they touch—which is the case when they overlap both along the x-axis and along the y-axis.  
+```JavaScript
+function overlap(actor1, actor2) {
+  return actor1.pos.x + actor1.size.x > actor2.pos.x &&
+         actor1.pos.x < actor2.pos.x + actor2.size.x &&
+         actor1.pos.y + actor1.size.y > actor2.pos.y &&
+         actor1.pos.y < actor2.pos.y + actor2.size.y;
+}
+```
+  
+If an actor overlaps, collide method is called. Lava sets the state to `lost` while coins get collected and set to `won` if they're the last coin.  
+```JavaScript
+//Lava Collide
+Lava.prototype.collide = function(state) {
+  return new State(state.level, state.actors, "lost");
+};
+
+//Coin Collide
+Coin.prototype.collide = function(state) {
+  let filtered = state.actors.filter(a => a != this);
+  let status = state.status;
+  if (!filtered.some(a => a.type == "coin")) status = "won";
+  return new State(state.level, filtered, status);
+};
+```
+  
 
 
 ## Step 3: Demonstration ##  
