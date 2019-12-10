@@ -165,6 +165,15 @@ function runLevel(level, Display) {
 Display and run.
 
 ## Step 3: Demonstration ##  
+Use your html from stage one to run this. You will need to update it. The book provides this example:
+```html
+<link rel="stylesheet" href="css/game.css">
 
+<body>
+  <script>
+    runLevel(simpleLevel, DOMDisplay);
+  </script>
+</body>
+```
 ## Notes ##  
 Refer to the [chapter 16 coding sandbox](https://eloquentjavascript.net/code/#16 "EJ Chapter 16 Code Sandbox") for a demonstration of the **full game** running.
