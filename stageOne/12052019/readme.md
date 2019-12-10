@@ -3,6 +3,7 @@ This will contain our in-class examples for stage one.
 
 ## What we Need ##
 * Understanding of the printing of the world data representation
+* Print your world
 * Drawing of the level ***you made*** as an example.
 
 ***DO NOT USE THE EXAMPLE LEVEL PROVIDED IN THE BOOK***
@@ -328,3 +329,5 @@ We can also use the `five.js` file we made in [Lab 02](https://cs.indiana.edu/cl
 ## Misc Notes ##
 * We seperated our code into 3 different files. We could have kept the `JavaScript` inside of the html `<script>` tags, but this may be messy and hard to organize later on.
 * I did not add many comments to the code. Go through [EloquentJavascript chapter 16's](https://eloquentjavascript.net/16_game.html "EJ Chapter 16") to get a detailed inner working. You will need this for easier understanding.
+  
+For questions, comments, or concerns, please email me at woboland@iu.edu
