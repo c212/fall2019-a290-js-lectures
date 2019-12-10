@@ -116,7 +116,7 @@ Coin.prototype.update = function(time) {
 ```
   
 ### Running the Game ###
-You saw, [in chapter 14] (https://eloquentjavascript.net/14_dom.html#animationFrame "chapter 14"), a function called `requestAnimationFrame`. It was a bit "clunky", so lets make a helper function that lets us handle that easier: 
+You saw, [in chapter 14](https://eloquentjavascript.net/14_dom.html#animationFrame "chapter 14"), a function called `requestAnimationFrame`. It was a bit "clunky", so lets make a helper function that lets us handle that easier: 
 ```JavaScript
 function runAnimation(frameFunc) {
   let lastTime = null;
@@ -136,7 +136,7 @@ Something that is important to note, is that if we hide the tab or window, our g
 "When the browser tab or window with our page is hidden, requestAnimationFrame calls will be suspended until the tab or window is shown again. In this case, the difference between lastTime and time will be the entire time in which the page was hidden. Advancing the game by that much in a single step would look silly and might cause weird side effects, such as the player falling through the floor." - EJ.  
 The function also converts to seconds.  
   
-Now, lets make a function `runLevel` that is given an instance of the `Level` we made [in stage one on 12/05/2019] (https://github.com/c212/fall2019-a290-js-lectures/tree/master/stageOne/12052019 "Stage One"). It displays the level, allows user to play, and clears the display if we won or lost.
+Now, lets make a function `runLevel` that is given an instance of the `Level` we made [in stage one on 12/05/2019](https://github.com/c212/fall2019-a290-js-lectures/tree/master/stageOne/12052019 "Stage One"). It displays the level, allows user to play, and clears the display if we won or lost.
 
 ```JavaScript
 function runLevel(level, Display) {
@@ -167,4 +167,4 @@ Display and run.
 ## Step 3: Demonstration ##  
 
 ## Notes ##  
-Refer to the [chapter 16 coding sandbox] (https://eloquentjavascript.net/code/#16 "EJ Chapter 16 Code Sandbox") for a demonstration of the **full game** running.
+Refer to the [chapter 16 coding sandbox](https://eloquentjavascript.net/code/#16 "EJ Chapter 16 Code Sandbox") for a demonstration of the **full game** running.
