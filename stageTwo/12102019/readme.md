@@ -115,56 +115,54 @@ Coin.prototype.update = function(time) {
 };
 ```
   
-### Player Movement and Tracking Keys ###
-Player motion is handled slightly different. We need to handle both the x and y axis seperatly, because a wall should not stop us falling but the floor should. We can move left or right if there are now walls in the way and up. We can also fall:  
+### Running the Game ###
+You saw, [in chapter 14] (https://eloquentjavascript.net/14_dom.html#animationFrame "chapter 14"), a function called `requestAnimationFrame`. It was a bit "clunky", so lets make a helper function that lets us handle that easier: 
 ```JavaScript
-const playerXSpeed = 7;
-const gravity = 30;
-const jumpSpeed = 17;
-
-Player.prototype.update = function(time, state, keys) {
-  let xSpeed = 0;
-  if (keys.ArrowLeft) xSpeed -= playerXSpeed;
-  if (keys.ArrowRight) xSpeed += playerXSpeed;
-  let pos = this.pos;
-  let movedX = pos.plus(new Vec(xSpeed * time, 0));
-  if (!state.level.touches(movedX, this.size, "wall")) {
-    pos = movedX;
-  }
-
-  let ySpeed = this.speed.y + time * gravity;
-  let movedY = pos.plus(new Vec(0, ySpeed * time));
-  if (!state.level.touches(movedY, this.size, "wall")) {
-    pos = movedY;
-  } else if (keys.ArrowUp && ySpeed > 0) {
-    ySpeed = -jumpSpeed;
-  } else {
-    ySpeed = 0;
-  }
-  return new Player(pos, new Vec(xSpeed, ySpeed));
-};
-```
-The gravity strength, jumping speed, and pretty much all other constants in this game have been set by trial and error. I tested values until I found a combination I liked." - EJ. 
-  
-Now we will get into handling the action key presses. We want them to be able to be held down and have our player move. Another thing to note is that on most browsers, key presses can be used to scroll. `preventDefault` allows us to get around that issue. The function provided below is given an arrat of key names, will return an object that will allow us to track the current position of the keys. It allows us to track the arrow keys. `keydown` refers to when the key is pressed down:
-```JavaScript
-function trackKeys(keys) {
-  let down = Object.create(null);
-  function track(event) {
-    if (keys.includes(event.key)) {
-      down[event.key] = event.type == "keydown";
-      event.preventDefault();
+function runAnimation(frameFunc) {
+  let lastTime = null;
+  function frame(time) {
+    if (lastTime != null) {
+      let timeStep = Math.min(time - lastTime, 100) / 1000; //1/10 of a second
+      if (frameFunc(timeStep) === false) return;
     }
+    lastTime = time;
+    requestAnimationFrame(frame);
   }
-  window.addEventListener("keydown", track);
-  window.addEventListener("keyup", track);
-  return down;
+  requestAnimationFrame(frame);
 }
-
-const arrowKeys =
-  trackKeys(["ArrowLeft", "ArrowRight", "ArrowUp"]);
 ```
   
+Something that is important to note, is that if we hide the tab or window, our gmae will skip ahead.  
+"When the browser tab or window with our page is hidden, requestAnimationFrame calls will be suspended until the tab or window is shown again. In this case, the difference between lastTime and time will be the entire time in which the page was hidden. Advancing the game by that much in a single step would look silly and might cause weird side effects, such as the player falling through the floor." - EJ.  
+The function also converts to seconds.  
+  
+Now, lets make a function `runLevel` that is given an instance of the `Level` we made [in stage one on 12/05/2019] (https://github.com/c212/fall2019-a290-js-lectures/tree/master/stageOne/12052019 "Stage One"). It displays the level, allows user to play, and clears the display if we won or lost.
+
+```JavaScript
+function runLevel(level, Display) {
+  let display = new Display(document.body, level);
+  let state = State.start(level);
+  let ending = 1;
+  return new Promise(resolve => {
+    runAnimation(time => {
+      state = state.update(time, arrowKeys);
+      display.syncState(state);
+      if (state.status == "playing") {
+        return true;
+      } else if (ending > 0) {
+        ending -= time;
+        return true;
+      } else {
+        display.clear();
+        resolve(state.status);
+        return false;
+      }
+    });
+  });
+}
+```
+  
+
 
 ## Step 3: Demonstration ##  
 
