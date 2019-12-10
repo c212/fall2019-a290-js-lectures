@@ -177,3 +177,5 @@ Use your html from stage one to run this. You will need to update it. The book p
 ```
 ## Notes ##  
 Refer to the [chapter 16 coding sandbox](https://eloquentjavascript.net/code/#16 "EJ Chapter 16 Code Sandbox") for a demonstration of the **full game** running.
+  
+For questions, comments, or concerns, please email me at woboland@iu.edu
