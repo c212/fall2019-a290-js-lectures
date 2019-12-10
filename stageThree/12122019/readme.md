@@ -84,3 +84,5 @@ You can use the html you made in stage 1. Below is how the book calls `runGame`:
 * `plans` parameter in `runGame` is an array containing string representations of your game, similiar to the single small level you made in stage one.
 * `GAME_LEVELS` is defined in a file that can be found on EloquentJavascript's coding sandbox. I recommend you do something similiar, but with your own levels.
 * Refer to the [chapter 16 coding sandbox](https://eloquentjavascript.net/code/#16 "EJ Chapter 16 Code Sandbox") for a demonstration of the **full game** running.
+  
+For questions, comments, or concerns, please email me at woboland@iu.edu
