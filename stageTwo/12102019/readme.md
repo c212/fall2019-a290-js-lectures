@@ -4,8 +4,8 @@ This will contain what we go over in class plus a possible stage two example.
 
 ## What we Need ##
 * Intrinsic World Dynamics Demonstrated.  
- * at least 1 coin that wobbles
- * at least 1 demonstration of each lava block moving (falling/bouncing)
+  * at least 1 coin that wobbles
+  * at least 1 demonstration of each lava block moving (falling/bouncing)
 * Understanding of the code.  
   
 **NOTE: While the code we go through below allows us for more than just instrinsic world dynamics, we only want the steps for intrinsic world dynamics. Only include what you think demonstrates intrinsic world dynamics and still runs.** 
