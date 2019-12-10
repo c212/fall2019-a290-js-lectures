@@ -1,5 +1,11 @@
 # Stage Three Example/In Class #
 
+## What we want ##
+
+## Step 1: Understnading ##
+
+## Step 2: ##
+
 ### Player Movement and Tracking Keys ###
 Player motion is handled slightly different. We need to handle both the x and y axis seperatly, because a wall should not stop us falling but the floor should. We can move left or right if there are now walls in the way and up. We can also fall:  
 ```JavaScript
@@ -49,3 +55,29 @@ function trackKeys(keys) {
 const arrowKeys =
   trackKeys(["ArrowLeft", "ArrowRight", "ArrowUp"]);
 ```
+
+### Running the Game ###
+We can use the `runLevel` function you made in stage 2. But what if you have multiple leves? Lets make a helper function for that:  
+```JavaScript
+async function runGame(plans, Display) {
+  for (let level = 0; level < plans.length;) {
+    let status = await runLevel(new Level(plans[level]),
+                                Display);
+    if (status == "won") level++;
+  }
+  console.log("You've won!");
+}
+```
+
+## Step 3: Demonstration ##
+You can use the html you made in stage 1. Below is how the book calls `runGame`:
+```html
+<link rel="stylesheet" href="css/game.css">
+
+<body>
+  <script>
+    runGame(GAME_LEVELS, DOMDisplay);
+  </script>
+</body>
+```
+## Notes ##
