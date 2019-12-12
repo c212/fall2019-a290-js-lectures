@@ -1,8 +1,17 @@
 # Stage Three Example/In Class #
 
 ## What we want ##
+* Player movement.  
+  * Player can move.  
+  * player can die.  
+  * player can win.  
+* Your own set of levels, that we can play through.  
+  * at least 3 levels.  
+  * must demonstrate collection of coins, and both types of lava.  
+**NOTE:** They do not have to super big! Just enough to be playable.  
 
-## Step 1: Understnading ##
+## Step 1: Understanding ##
+We have added almost everything! Our game is almost done! Now we just need to get the player moving.  
 
 ## Step 2: ##
 
@@ -81,8 +90,8 @@ You can use the html you made in stage 1. Below is how the book calls `runGame`:
 </body>
 ```
 ## Notes ##
-* `plans` parameter in `runGame` is an array containing string representations of your game, similiar to the single small level you made in stage one.
-* `GAME_LEVELS` is defined in a file that can be found on EloquentJavascript's coding sandbox. I recommend you do something similiar, but with your own levels.
-* Refer to the [chapter 16 coding sandbox](https://eloquentjavascript.net/code/#16 "EJ Chapter 16 Code Sandbox") for a demonstration of the **full game** running.
+* `plans` parameter in `runGame` is an array containing string representations of your game, similiar to the single small level you made in stage one.  
+* `GAME_LEVELS` is defined in a file that can be found on EloquentJavascript's coding sandbox. I recommend you do something similiar, but with your own levels. It is essentially an array containing levels, such as the one you made for Stage 1.  
+* Refer to the [chapter 16 coding sandbox](https://eloquentjavascript.net/code/#16 "EJ Chapter 16 Code Sandbox") for a demonstration of the **full game** running.  
   
 For questions, comments, or concerns, please email me at woboland@iu.edu
