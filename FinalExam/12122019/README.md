@@ -16,4 +16,28 @@ Add a MongoDB backend to it, such as we did [on November 20th in class](http://s
 ## Notes ##
 * You may have to switch between node 6 and node 10, depending on what you are working on. Checkout the [whats new from december 3rd](https://cs.indiana.edu/classes/a290-js/fall2019/whatsnew.html "Whats new").  
 
+## Common Issues (and Fixes) ##
+Below is a list of common issues and solutions to help you.  
+### Incorrect Node Version ###
+You may run into an issue where you need to switch versions of node. First, determine which version of node you are using:  
+`$ node -v`  
+Your version will be printed to the terminal.  
+  
+If you are using version 6.17.1 and want to switch to 10.14.1:  
+`$ export PATH=/l/www/classes/a290-js/software/local/bin:$PATH`  
+If you are using version 10.14.1 and want to switch to 6.17.1:  
+`$ export PATH=/usr/bin:$PATH`  
+  
+You can also check the path that node is using by the command: `$ which node`.  
+  
+### I can't find my nobackup folder ###
+You may need to create your nobackup folder if you did not do so before. To do this:  
+`$ makenobackup` and then reply `yes`.  
+Now, if you just logged into *silo*, your current working directory will be `/u/yourUsername/`.  
+**The nobackup folder is not located here.** It is located in `/nobackup/yourUsername/`.  
+To get there from your home directory, you can use this:  
+`$ cd ../..`  
+`$ cd nobackup/yourUsername/`  
+
+
 Let dgerman@indiana.edu know if you have any questions.
