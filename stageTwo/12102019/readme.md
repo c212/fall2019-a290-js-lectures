@@ -1,6 +1,7 @@
 # Stage Two Example/In Class #
 This will contain what we go over in class plus a possible stage two example.  
-**NOTE:** This may or may not contain some code for stage 3 that should not be used in stage 2
+**NOTE:** This may or may not contain some code for stage 3 that should not be used in stage 2.  
+**NOTE:** You may need to include some code from stage 3 for this to work!!!
 
 ## What we Need ##
 * Intrinsic World Dynamics Demonstrated.  
