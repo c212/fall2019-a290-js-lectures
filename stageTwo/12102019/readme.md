@@ -1,7 +1,6 @@
 # Stage Two Example/In Class #
 This will contain what we go over in class plus a possible stage two example.  
-**NOTE:** This may or may not contain some code for stage 3 that should not be used in stage 2.  
-**NOTE:** You may need to include some code from stage 3 for this to work!!!
+**NOTE:** You may need to include some code from stage 3 for this to work!!! Provided is the possible smallest amount of code needed to get it to work. You would have to adjust most of the code for this to work for stage 2.
 
 ## What we Need ##
 * Intrinsic World Dynamics Demonstrated.  
@@ -180,7 +179,8 @@ Use your html from stage one to run this. You will need to update it. Such as:
 ```
 **NOTE:** You may need to use `runGame` defined in stage 3 instead.  
 
-## Notes ##  
-Refer to the [chapter 16 coding sandbox](https://eloquentjavascript.net/code/#16 "EJ Chapter 16 Code Sandbox") for a demonstration of the **full game** running.
+## Notes and Hints ##  
+* Refer to the [chapter 16 coding sandbox](https://eloquentjavascript.net/code/#16 "EJ Chapter 16 Code Sandbox") for a demonstration of the **full game** running.
+* Try having the full game and removing parts of the code you do not think you need.  
   
 For questions, comments, or concerns, please email me at woboland@iu.edu
