@@ -181,6 +181,8 @@ Use your html from stage one to run this. You will need to update it. Such as:
 
 ## Notes and Hints ##  
 * Refer to the [chapter 16 coding sandbox](https://eloquentjavascript.net/code/#16 "EJ Chapter 16 Code Sandbox") for a demonstration of the **full game** running.
-* Try having the full game and removing parts of the code you do not think you need.  
+* Try having the full game and removing parts of the code you do not think you need. 
+  * Try altering the function that moves the player.
+* It is possible to make stage 2 work with the code provided, but you would need to alter the code to get it to work. The above hint is the quickest way, but is not the best.
   
 For questions, comments, or concerns, please email me at woboland@iu.edu
