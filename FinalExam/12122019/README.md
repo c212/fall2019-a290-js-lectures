@@ -38,6 +38,11 @@ Now, if you just logged into *silo*, your current working directory will be `/u/
 To get there from your home directory, you can use this:  
 `$ cd ../..`  
 `$ cd nobackup/yourUsername/`  
-
+  
+### It is giving me an error when I try to run it ###
+First off, make sure your port is not currently in use:  
+`$ netstat -a | grep portNumber`  
+If anything comes up, it is currently in use. Choose a different port.  
+If it isn't in use, make sure you adjusted the code to reflect the port you have chosen.  
 
 Let dgerman@indiana.edu know if you have any questions.
