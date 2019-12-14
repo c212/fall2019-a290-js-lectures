@@ -169,6 +169,7 @@ Display and run.
 ## Step 3: Demonstration ##  
 Use your html from stage one to run this. You will need to update it. Such as:
 ```html
+<html>
 <link rel="stylesheet" href="css/game.css">
 <script src="S1Code.js"></script>
 
@@ -177,6 +178,7 @@ Use your html from stage one to run this. You will need to update it. Such as:
     runLevel(simpleLevel, DOMDisplay);
   </script>
 </body>
+</html>
 ```
 **NOTE:** You may need to use `runGame` defined in stage 3 instead.  
 
