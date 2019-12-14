@@ -170,6 +170,7 @@ Display and run.
 Use your html from stage one to run this. You will need to update it. Such as:
 ```html
 <link rel="stylesheet" href="css/game.css">
+<script src="S1Code.js"></script>
 
 <body>
   <script>
