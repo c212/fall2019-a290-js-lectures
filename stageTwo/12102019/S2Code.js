@@ -1,3 +1,9 @@
+/*
+ * NOTE: The code below does complete stage 02; HOWEVER, it is NOT the least amount of code that you need to complete it.
+ * This works for stage 02, but is not the best solution
+ * This is just one way of getting stage 022 to work.
+*/
+
 var simpleLevelPlan = `
 ......................
 ..#................#..
@@ -117,8 +123,6 @@ var levelChars = {
   "@": Player, "o": Coin,
   "=": Lava, "|": Lava, "v": Lava
 };
-
-var simpleLevel = new Level(simpleLevelPlan);
 
 function elt(name, attrs, ...children) {
   let dom = document.createElement(name);
@@ -309,11 +313,11 @@ function runAnimation(frameFunc) {
   requestAnimationFrame(frame);
 }
 
-function runLevel(level, Display) {
+async function runLevel(level, Display) {
   let display = new Display(document.body, level);
   let state = State.start(level);
   let ending = 1;
-  return new Promise(resolve => {
+  await new Promise(resolve => {
     runAnimation(time => {
       state = state.update(time, arrowKeys);
       display.syncState(state);
@@ -329,10 +333,4 @@ function runLevel(level, Display) {
       }
     });
   });
-}
-
-async function runGame(plans, Display) {
-    let status = await runLevel(new Level(plans),
-                                Display);
-  console.log("You've won!");
 }
