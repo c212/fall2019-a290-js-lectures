@@ -1,13 +1,6 @@
-var simpleLevelPlan = `
-......................
-..#................#..
-..#..............=.#..
-..#.........o.o....#..
-..#.@......#####...#..
-..#####............#..
-......#++++++++++++#..
-......##############..
-......................`;
+/*
+ * Below is a working example of stage 03. Please note I provided only a single level (from the book)
+*/
 
 var Level = class Level {
   constructor(plan) {
@@ -117,8 +110,6 @@ var levelChars = {
   "@": Player, "o": Coin,
   "=": Lava, "|": Lava, "v": Lava
 };
-
-var simpleLevel = new Level(simpleLevelPlan);
 
 function elt(name, attrs, ...children) {
   let dom = document.createElement(name);
