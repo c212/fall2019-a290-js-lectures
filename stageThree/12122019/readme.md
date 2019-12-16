@@ -1,4 +1,5 @@
 # Stage Three Example/In Class #
+**NOTE:** The provided code are an example, with only 1 stage.
 
 ## What we want ##
 * Player movement.  
