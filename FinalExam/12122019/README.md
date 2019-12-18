@@ -57,6 +57,7 @@ Setup your mongoDB. Look at the whats new, and take your angular from the tutori
 * Take a look at `public/index.html` to see how it interacts.  
 * Take a look at `public/core.js` to see how it ties together. 
 * Adjust `public/index.html` to work with your mongoDB.  
+
 Notice that `silo.cs.indiana.edu:port/api/tasks` contains tasks (with ID's) that we want to add/remove. How can we use this knowledge to our advantage? How does `public/index.html` and `server.js` and `public/core.js` use this?  
 
 Let dgerman@indiana.edu know if you have any questions.
