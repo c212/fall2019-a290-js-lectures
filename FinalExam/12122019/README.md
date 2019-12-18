@@ -46,10 +46,11 @@ If anything comes up, it is currently in use. Choose a different port.
 If it isn't in use, make sure you adjusted the code to reflect the port you have chosen.  
   
 ### How should my folders be organized? ###
-server.js   
-package.json  
-public/core.js  
-public/index.html  
+`Instructions` or `README.md`  
+`server.js`   
+`package.json`  
+`public/core.js`  
+`public/index.html`  
   
 ### How should I start getting it to work? ###  
 Setup your mongoDB. Look at the whats new, and take your angular from the tutorial and adjust it to work with the mongoDB backend.  
